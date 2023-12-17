@@ -21,6 +21,7 @@ public class Festival {
     private String name;
     private String country;
     private String city;
+    private String description;
     private List<String> images;
     private List<String> genres;
 

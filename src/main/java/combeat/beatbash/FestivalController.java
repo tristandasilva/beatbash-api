@@ -46,6 +46,7 @@ public class FestivalController {
             updatedFestival.setGenres(festival.getGenres());
             updatedFestival.setImages(festival.getImages());
             updatedFestival.setName(festival.getName());
+            updatedFestival.setDescription(festival.getDescription());
             return new ResponseEntity<>(festivalService.updateFestival(updatedFestival), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
