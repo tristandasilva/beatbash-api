@@ -14,7 +14,7 @@ import java.util.Optional;
 public class FestivalController {
     @Autowired
     private FestivalService festivalService;
-    @CrossOrigin(origins = "${env.PROXY}")
+    @CrossOrigin(origins = "*")
     @GetMapping
     public ResponseEntity<List<Festival>> getAllFestivals() {
         return new ResponseEntity<List<Festival>>(festivalService.allFestivals(), HttpStatus.OK);
@@ -25,7 +25,7 @@ public class FestivalController {
 //        return new ResponseEntity<Optional<Festival>>(festivalService.getSingleFestival(id), HttpStatus.OK);
 //    }
 
-    @CrossOrigin(origins = "${env.PROXY}")
+    @CrossOrigin(origins = "*")
     @GetMapping("/{festivalId}")
     public ResponseEntity<Optional<Festival>> getFestivalByFestivalId(@PathVariable String festivalId) {
         return new ResponseEntity<Optional<Festival>>(festivalService.getByFestivalId(festivalId), HttpStatus.OK);
