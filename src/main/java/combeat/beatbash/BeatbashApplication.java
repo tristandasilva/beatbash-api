@@ -14,6 +14,6 @@ public class BeatbashApplication {
 
 	@GetMapping("/")
 	public String apiRoot() {
-		return "Hello world";
+		return "Welcome to the festivals API!";
 	}
 }

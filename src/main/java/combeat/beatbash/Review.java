@@ -15,9 +15,10 @@ public class Review {
 
     @Id
     private ObjectId id;
+    private String reviewId;
+    private String festivalId;
+    private String firstName;
+    private String lastName;
+    private String starRating;
     private String body;
-
-    public Review(String body) {
-        this.body = body;
-    }
 }

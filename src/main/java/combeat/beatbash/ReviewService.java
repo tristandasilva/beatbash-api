@@ -6,6 +6,9 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ReviewService {
 
@@ -15,15 +18,31 @@ public class ReviewService {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public Review createReview(String reviewBody, String festivalId) {
+    public Review createReview(Review review) {
 
-        Review review = reviewRepository.insert(new Review(reviewBody));
+        Review newReview = reviewRepository.save(review);
 
         mongoTemplate.update(Festival.class)
-                .matching(Criteria.where("festivalId").is(festivalId))
+                .matching(Criteria.where("festivalId").is(review.getFestivalId()))
                 .apply(new Update().push("reviews").value(review))
                 .first();
 
-        return review;
+        return newReview;
+    }
+
+    public List<Review> allReviews() {
+        return reviewRepository.findAll();
+    }
+
+    public Optional<Review> getByReviewId(String reviewId) {
+        return reviewRepository.findByReviewId(reviewId);
+    }
+
+    public Review updateReview(Review review) {
+        return reviewRepository.save(review);
+    }
+
+    public Optional<Review> deleteByReviewId(String reviewId) {
+        return reviewRepository.deleteByReviewId(reviewId);
     }
 }
