@@ -14,7 +14,7 @@
 	<name>beatbash</name>
 	<description>Platform to rate and review music festivals</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
 
