@@ -7,17 +7,18 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "reviews")
+import java.util.List;
+
+@Document(collection = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Review {
+public class User {
 
     @Id
-    private ObjectId id;
-    private String reviewId;
-    private String festivalId;
-    private String userId;
-    private String starRating;
-    private String body;
+    private String uid;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private List<Review> reviewsPosted;
 }
